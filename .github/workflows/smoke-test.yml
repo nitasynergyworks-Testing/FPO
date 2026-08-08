@@ -10,7 +10,7 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
 
-    steps:
+   steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -21,7 +21,7 @@ jobs:
           java-version: '17'
 
       - name: Run Maven Tests
-         working-directory: FPO
+        working-directory: FPO
         run: mvn clean test
 
       - name: Upload Test Results
