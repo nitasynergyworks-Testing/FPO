@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM
+        "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regression Suite">
+
+    <test name="Chrome Test">
+
+        <classes>
+
+            <class name="tests.Admin.TC_01LoginValidation"/>
+            <class name="tests.Admin.TC_02LogOutValidateion"/>
+            <class name="tests.Admin.TC_03ValidateAppointmentsRedirectionaAndCount"/>
+            <class name="tests.Admin.TC_04ValidatePatientsRedirectionaAndCount"/>
+            <class name="tests.Admin.TC_05ValidateDoctorsRedirectionaAndCount"/>
+        </classes>
+
+    </test>
+
+</suite>

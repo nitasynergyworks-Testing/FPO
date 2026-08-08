@@ -1,0 +1,14 @@
+<suite name="FPO Suite">
+
+    <listeners>
+        <listener class-name="com.fpo.utils.TestListener"/>
+    </listeners>
+
+    <test name="FPO Test">
+        <classes>
+            <class name="com.fpo.tests.LoginTest"/>
+            <class name="com.fpo.tests.ValidateAllPagesTest"/>
+        </classes>
+    </test>
+
+</suite>
