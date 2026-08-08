@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '0 16 * * *'
+    - cron: '0 4 * * *'
 
 jobs:
   run-tests:
@@ -15,10 +15,13 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '21'
+
+      - name: Verify Java Version
+        run: java -version
 
       - name: Run Maven Tests
         working-directory: FPO
@@ -32,3 +35,25 @@ jobs:
           path: |
             FPO/reports/
             FPO/test-output/
+
+      - name: Send Email Report
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: FPO Automation Execution Report
+          to: ${{ secrets.EMAIL_USERNAME }}
+          from: GitHub Actions
+          body: |
+            FPO Automation Suite execution completed.
+
+            Repository: FPO
+            Workflow: GitHub Actions
+            Status: Please check attached report.
+
+          attachments: |
+            FPO/reports/*.html
