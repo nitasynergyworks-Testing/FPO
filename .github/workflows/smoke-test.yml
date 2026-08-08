@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '0 4 * * *'
+    - cron: '0 4 * * *'   # 9 PM PDT
 
 jobs:
   run-tests:
@@ -22,6 +22,11 @@ jobs:
 
       - name: Verify Java Version
         run: java -version
+
+      - name: Clean Old Reports
+        run: |
+          rm -f FPO/reports/*.html
+          rm -rf FPO/test-output/*
 
       - name: Run Maven Tests
         working-directory: FPO
@@ -52,8 +57,9 @@ jobs:
             FPO Automation Suite execution completed.
 
             Repository: FPO
-            Workflow: GitHub Actions
-            Status: Please check attached report.
+            Execution Time: ${{ github.run_number }}
+
+            Please find the latest automation report attached.
 
           attachments: |
             FPO/reports/*.html
