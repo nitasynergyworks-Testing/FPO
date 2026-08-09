@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '30 6 * * *'   # 9:00 PM PDT (04:00 UTC)
+    - cron: '31 6 * * *'   # 9:00 PM PDT (04:00 UTC)
 
 jobs:
   run-tests:
