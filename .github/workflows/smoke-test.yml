@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '0 1 * * *'   # 04:00 UTC = 9:00 PM PDT (during daylight saving)
+    - cron: '0 1 * * *'   # 01:00 UTC
 
 jobs:
   run-tests:
@@ -66,7 +66,7 @@ jobs:
           username: ${{ secrets.EMAIL_USERNAME }}
           password: ${{ secrets.EMAIL_PASSWORD }}
           subject: FPO Automation Execution Report - Run #${{ github.run_number }}
-          to: ${{ secrets.EMAIL_USERNAME }}
+          to: ${{ secrets.EMAIL_USERNAME }}, dhanvir.kaur@thesynergyworks.com
           from: GitHub Actions
           body: |
             FPO Automation Suite execution completed.
